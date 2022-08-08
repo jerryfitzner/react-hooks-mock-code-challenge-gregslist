@@ -20,9 +20,14 @@ function App() {
     setListings(newList);
   }
 
+  const submitSearch = (info) => {
+    const newList = listings.filter((listing) => listing.description.toLowerCase().includes(info.toLowerCase()))
+    setListings(newList);
+  }
+
   return (
     <div className="app">
-      <Header />
+      <Header submitSearch={ submitSearch } />
       <ListingsContainer listings={ listings } onDelete={onDelete}/>
     </div>
   );
